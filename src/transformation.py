@@ -1,10 +1,11 @@
-import pandas as pd
 import numpy as np
-from .base import Handler
+import pandas as pd
+
 from utils.age_parser import extract_age
 from utils.experience_parser import extract_experience
-from utils.salary_parser import extract_salary
 from utils.helpers import find_column_name
+from utils.salary_parser import extract_salary
+from .base import Handler
 
 class FeatureExtractionHandler(Handler):
     """
