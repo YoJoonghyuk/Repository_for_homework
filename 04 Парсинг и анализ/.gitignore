@@ -4,3 +4,7 @@
 *.npy
 # Игнорировать папку с данными
 data/
+# Python
+__pycache__/
+# IDE-specific files
+.idea/

@@ -1,7 +1,9 @@
 import pandas as pd
 import numpy as np
 from .base import Handler
-from utils.parsers import extract_age, extract_experience, extract_salary
+from utils.age_parser import extract_age
+from utils.experience_parser import extract_experience
+from utils.salary_parser import extract_salary
 from utils.helpers import find_column_name
 
 class FeatureExtractionHandler(Handler):

@@ -1,6 +1,7 @@
 import argparse
 import sys
 import os
+import pandas as pd
 
 from src.loaders import DataLoaderHandler
 from src.transformation import FeatureExtractionHandler
@@ -30,7 +31,16 @@ def run_pipeline():
     try:
         result_message = loader.handle(args.path)
         print(result_message)
-    except Exception as e:
+    except FileNotFoundError:
+        print(f"Ошибка: Файл по указанному пути '{args.path}' не существует.")
+        sys.exit(1)
+    except pd.errors.EmptyDataError:
+        print(f"Ошибка: CSV-файл '{args.path}' пуст.")
+        sys.exit(1)
+    except KeyError as e:
+        print(f"Ошибка в структуре данных: {e}. Возможно, отсутствуют необходимые колонки.")
+        sys.exit(1)
+    except Exception as e: # Общая ошибка для непредвиденных проблем
         print(f"Произошла критическая ошибка в пайплайне: {e}")
         sys.exit(1)
 
